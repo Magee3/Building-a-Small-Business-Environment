@@ -42,9 +42,9 @@ Now we will configure the LAN-Switches settings that we were given to by our sen
 Run the following commands:
 
 ### conf sys int
-###   edit port2
-###    set allowaccess ping http https ssh
-###    set ip 10.128.0.1/24
+  ###   edit port2
+  ###    set allowaccess ping http https ssh
+  ###    set ip 10.128.0.1/24
 ### end
  
  ![LAN settings](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/a641555b-ec91-4bbe-8373-d2c46eaeddfc)
@@ -57,17 +57,17 @@ Run the following commands:
  we will run:
  
 ###  conf sys dhcp server
-###      edit 1
-###          set default-gateway 10.128.0.1
-###          set netmask 255.255.255.0
-###          set interface port2
-###          config ip-range
-###              edit 1
-###                  set start-ip 10.128.0.100
-###                  set end-ip 10.128.0.199
-###              next
-###          end
-###      next
+  ###      edit 1
+  ###          set default-gateway 10.128.0.1
+  ###          set netmask 255.255.255.0
+  ###          set interface port2
+  ###          config ip-range
+  ###              edit 1
+  ###                  set start-ip 10.128.0.100
+  ###                  set end-ip 10.128.0.199
+  ###              next
+  ###          end
+  ###      next
 ###  end
   
   Verify that the configuration is correct by running:
