@@ -13,7 +13,7 @@ The client has requested the following:
 - a DMZ network on 10.128.10.0/24
 - a GUEST network on 10.128.99.0/24
 
-## Stage1 : Network Setup : Topology
+# Stage1 : Network Setup : Topology
 
 Our topology will start with the WAN-CLOUD a.k.a. the internet, our WAN-SWITCH, our FortiGate which is our firewall,
 a LAN-SWITCH, DMZ-SWITCH, and our Windows 10 box.
@@ -28,7 +28,7 @@ do not have the same specifications.
 With everything plugged in out topology should look like this:
 ![Topology Pt1 End](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/5aebaec5-ae97-446a-a12c-861016d67871)
 
-Stage1 : Network Setup : Configuring the LAN Network
+# Stage1 : Network Setup : Configuring the LAN Network
 
 Open up the switch console and log in using the default credentials.
 username = admin
@@ -74,7 +74,7 @@ conf sys int
   
   ![DHCP check](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/b3085430-27c8-4c78-a659-1ed9e99b2a5d)
   
-  Stage1 : Network Setup : Add a Win10 workstation
+ # Stage1 : Network Setup : Add a Win10 workstation
 
 After spinning up the Windows virtual machine and logging in we will open the command prompt and make sure that our ip,
 gateway, and DHCP servers are correct by running:
@@ -92,7 +92,7 @@ Our results are that we can ping the LAN with no problem. The WAN and DNS are sh
 configured the settings.
 
 
-Stage1 : Network Setup : Connect to the firewall GUI
+# Stage1 : Network Setup : Connect to the firewall GUI
 
 Next we will log into our firewallwall GUI by typing its address into our browser of choice.
 We will use the same credentials we used to setup our firewall.
