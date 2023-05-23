@@ -25,52 +25,54 @@ For our FortiGate1 port 1 is for the WAN, port 2 is for LAN, port 3 is for guest
 do not have the same specifications.
 
 ![TopologyFirewall](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/d5fc1af5-e6ac-4eb4-aafb-dfd722c1c969)
+
 With everything plugged in out topology should look like this:
+
 ![Topology Pt1 End](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/5aebaec5-ae97-446a-a12c-861016d67871)
 
 # Stage1 : Network Setup : Configuring the LAN Network
 
 Open up the switch console and log in using the default credentials.
-username = admin
-password = none
+### username = admin
+### password = none
 
 After loging in you will be prompted to create your own password.
 
 Now we will configure the LAN-Switches settings that we were given to by our senior engineer.
 Run the following commands:
 
-conf sys int
-  edit port2
-    set allowaccess ping http https ssh
-    set ip 10.128.0.1/24
- end
+### conf sys int
+###   edit port2
+###    set allowaccess ping http https ssh
+###    set ip 10.128.0.1/24
+### end
  
  ![LAN settings](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/a641555b-ec91-4bbe-8373-d2c46eaeddfc)
  
  verify that your configuration is correct by running:
  
- show sys int port2
+ ### show sys int port2
  
  We will now enable DHCP and the LAN Network, our scope is from 10.128.0.[100-199].
  we will run:
  
-  conf sys dhcp server
-      edit 1
-          set default-gateway 10.128.0.1
-          set netmask 255.255.255.0
-          set interface port2
-          config ip-range
-              edit 1
-                  set start-ip 10.128.0.100
-                  set end-ip 10.128.0.199
-              next
-          end
-      next
-  end
+###  conf sys dhcp server
+###      edit 1
+###          set default-gateway 10.128.0.1
+###          set netmask 255.255.255.0
+###          set interface port2
+###          config ip-range
+###              edit 1
+###                  set start-ip 10.128.0.100
+###                  set end-ip 10.128.0.199
+###              next
+###          end
+###      next
+###  end
   
   Verify that the configuration is correct by running:
   
-  show sys dhcp server 1
+###  show sys dhcp server 1
   
   ![DHCP check](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/b3085430-27c8-4c78-a659-1ed9e99b2a5d)
   
@@ -79,7 +81,7 @@ conf sys int
 After spinning up the Windows virtual machine and logging in we will open the command prompt and make sure that our ip,
 gateway, and DHCP servers are correct by running:
 
-ipconfig /all
+### ipconfig /all
 
 ![ipconfigcheck](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/90d6eab2-fa7b-4855-9777-f2de1f5fd190)
 
