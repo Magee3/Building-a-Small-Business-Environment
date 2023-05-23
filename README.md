@@ -13,7 +13,7 @@ The client has requested the following:
 - a DMZ network on 10.128.10.0/24
 - a GUEST network on 10.128.99.0/24
 
-Stage1 : Network Setup : Topology
+# Stage1 : Network Setup : Topology
 
 Our topology will start with the WAN-CLOUD a.k.a. the internet, our WAN-SWITCH, our FortiGate which is our firewall,
 a LAN-SWITCH, DMZ-SWITCH, and our Windows 10 box.
