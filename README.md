@@ -33,19 +33,19 @@ With everything plugged in out topology should look like this:
 # Stage1 : Network Setup : Configuring the LAN Network
 
 Open up the switch console and log in using the default credentials.
-### username = admin
-### password = none
+ username = admin
+ password = none
 
 After loging in you will be prompted to create your own password.
 
 Now we will configure the LAN-Switches settings that we were given to by our senior engineer.
 Run the following commands:
 
-### conf sys int
-  ###   edit port2
-  ###    set allowaccess ping http https ssh
-  ###    set ip 10.128.0.1/24
-### end
+ conf sys int
+     edit port2
+      set allowaccess ping http https ssh
+      set ip 10.128.0.1/24
+ end
  
  ![LAN settings](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/a641555b-ec91-4bbe-8373-d2c46eaeddfc)
  
@@ -56,19 +56,19 @@ Run the following commands:
  We will now enable DHCP and the LAN Network, our scope is from 10.128.0.[100-199].
  we will run:
  
-###  conf sys dhcp server
-  ###      edit 1
-  ###          set default-gateway 10.128.0.1
-  ###          set netmask 255.255.255.0
-  ###          set interface port2
-  ###          config ip-range
-  ###              edit 1
-  ###                  set start-ip 10.128.0.100
-  ###                  set end-ip 10.128.0.199
-  ###              next
-  ###          end
-  ###      next
-###  end
+ conf sys dhcp server
+       edit 1
+          set default-gateway 10.128.0.1
+          set netmask 255.255.255.0
+           set interface port2
+           config ip-range
+              edit 1
+                  set start-ip 10.128.0.100
+                   set end-ip 10.128.0.199
+              next
+          end
+       next
+  end
   
   Verify that the configuration is correct by running:
   
