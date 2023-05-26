@@ -114,6 +114,60 @@ Back up the configuration and reboot the firewall.
  we found that the configurations were correct, all we had to do was re-run ipconfig /release and ipconfig /renew. Everything worked properly
  and we were able to connect to the cloud.
  
+ Lastly we connected to our firewall GUI to configure traffic rules for each device.
+ 
+ # Stage2 : Domain Setup : Topology
+ 
+ For stage to we will add and setup our Domain controller.
+ 
+ ![AddingDomainTopology](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/d2177eb6-0206-41e1-b987-e197c8a13a44)
+ 
+ Stage2 : Domain Setup : Prepare a Win2012r2 server
+ 
+ We log into the Win server using default credentials and changing it to something more secured. We will use the following setup our network adapter.
+ 
+   ip address: 10.128.0.10
+  subnet mask: 255.255.255.0
+  default gateway: 10.128.0.1
+  
+  DNS1: 127.0.0.1
+  DNS2: 10.128.0.1
+
+To change adapter settings go into control panel --> Network and Internet --> Network and Sharing Center --> Change adapter settings --> Right click your
+adapter and select properties --> IPv4 settings.
+
+The final window should look something like this:
+![DCproperties](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/64385107-acef-4cb6-b3ed-a7362b447707)
+
+To test our connections we will ping the following targets:
+LAN-SWITCH: 10.128.0.1
+WAN: 8.8.8.8
+DNS: google.com
+
+All the pings have came back successfull we will sync our time with the switches.
+Right click the time on the bottom right of the task bar and select Adjust Date and Time.
+Change the time zone to the same as the switch.
+Afterwards click internet time and type in the switches ip and hit update now.
+
+![sync time](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/07b77182-68dd-4de5-a011-0fc6d500260e)
+
+It may not work the first time give it about 3-5 tries before troubleshooting.
+
+Next we will change our hostname
+
+In server manage go into local servers and click the computer name.
+change the computer description to: DC
+hit apply then change.
+
+![hostname change](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/78d0f8be-1160-4a06-9e67-9011e4dc0a44)
+
+
+
+
+
+ 
+ 
+ 
  
  
 
