@@ -122,7 +122,7 @@ Back up the configuration and reboot the firewall.
  
  ![AddingDomainTopology](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/d2177eb6-0206-41e1-b987-e197c8a13a44)
  
- Stage2 : Domain Setup : Prepare a Win2012r2 server
+ ### Stage2 : Domain Setup : Prepare a Win2012r2 server
  
  We log into the Win server using default credentials and changing it to something more secured. We will use the following setup our network adapter.
  
@@ -160,6 +160,33 @@ change the computer description to: DC
 hit apply then change.
 
 ![hostname change](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/78d0f8be-1160-4a06-9e67-9011e4dc0a44)
+
+### Stage2 : Domain Setup : Install Active Directory
+
+Installing active directory to a Windows web server is really easy.
+Go into server manager --> manage --> Add roles and features --> Active Directory
+
+![011814_0709_buildingyou12](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/b633bb8e-507c-4d92-9774-2cc2b1a9bef4)
+
+Keep the default settings until you reacht the server roles tab. Check "Active Directory Domain Services" and continue with the installation.
+After installation has finished there should be a notification in the server manager asking you to promote the server to the Domain Controller
+select "yes". If you do not get the notification you may have to refresh the page.
+
+![011814_0709_buildingyou12](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/ae1dabc5-1c7a-450f-bbf1-5ddc16124b84)
+
+Select the "root forest" option and name your root folder
+
+![adname](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/2cf39276-7f8e-4dd0-aba7-2452cd453682)
+
+Select "Next"
+Enter a password
+and finish the installation. When the installation is finish reboot the device.
+
+![adpass](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/882942e0-ec6a-4d9b-a5c8-8c451b357611)
+
+### Stage2 : Domain Setup : Create new AD users
+
+
 
 
 
