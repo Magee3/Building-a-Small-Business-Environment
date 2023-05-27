@@ -186,6 +186,47 @@ and finish the installation. When the installation is finish reboot the device.
 
 ### Stage2 : Domain Setup : Create new AD users
 
+We created users for our Domain. This allows people who has the credentials to log into a computer in the business environment.
+Our naming format is as follows:
+
+We will create a admin and user account for Ashley Williams. We will take the first name initial and attatch it to the last name followed
+by a u- for user and a a- for admin account.
+
+a-awilliams
+u-awilliams
+
+![AD add user](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/9b9a03b1-adc5-468e-9105-5c067e2fc575)
+
+![users tab](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/dbf765e6-6e75-40f4-8f07-4c8e339e6ba3)
+
+![user cred](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/afbe4315-2694-45e1-94bf-5acf7473afc5)
+
+![change pass](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/b51822a6-82f8-44a0-823a-3502570e251e)
+
+For admin accounts you must add them to the "Domain Admins" group to be able to make administrator changes and installations. Normal
+users will not have the permisions to change, and install files.
+
+![add group](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/8db76a87-98c0-4861-b71b-5987858f4c7d)
+
+![domain admin group](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/877367b2-12f2-4196-8b97-94ef3264ef61)
+
+![domain admin check](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/615bccab-7ca8-4966-bd19-e09434b63698)
+
+Be sure to check names, windows is Case Sensitive.
+
+### Stage2 : Domain Setup : Prepare Win10 to join the domain
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
