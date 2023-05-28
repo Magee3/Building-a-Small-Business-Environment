@@ -216,6 +216,30 @@ Be sure to check names, windows is Case Sensitive.
 
 ### Stage2 : Domain Setup : Prepare Win10 to join the domain
 
+In order to prep our windows workstation to join our DC server we must first name the windows 10 pc so we can identify it.
+
+under control panel go to --> System --> Change Settings
+under the system properties we changed the name of our workstation.
+
+![Change PC name](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/4eec0625-fd35-4980-a821-c992a1dca695)
+
+We then went into the our Win10 workstation and changed our IP settings. Our IP address will be obtained automatically through our DC server,
+and our DNS settings are pointed to our LAN-SWITCH and our DC server.
+
+Our last step is to sync our time with our DC. We changed the time zone to the same time as our DC, then under the Internet Time settings
+we type in our full Domain Name. 
+
+![Domain Time Sync](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/65e4911b-87aa-48b6-99cf-9cac75ef5ea4)
+
+
+### Stage2 : Domain Setup : Join Win10 to the widgets.localdomain domain
+
+To join the domain go back into the settings in which we changed the computer name to win10. Click the domain box and type in the domain
+name. Afterwards you will get a prompt to login. Use an admin account that you have created.
+
+![joining the widgets domain](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/0897f4c3-95f4-40c6-9ff1-6895a7f33f7c)
+
+Logout of the windows10 workstation and log back in using a user, or admin account. Our station has been succesfully linked to our Domain Controller.
 
 
 
