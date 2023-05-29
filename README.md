@@ -385,11 +385,69 @@ We will now change the servers hostname run:
           ErrorLog   /var/log/apache2/dokuwiki_error.log
           CustomLog  /var/log/apache2/dokuwiki_access.log combined
       </VirtualHost>
+      
+      ![config file](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/a5477014-2f47-409c-b6a3-411b5374478b)
+      
+      
+  These commands finishes and solidifies the configuration.
+
+  cp /var/www/html/dokuwiki/.htaccess{.dist,}
+  chown -R www-data:www-data /var/www/html/dokuwiki
+  apache2ctl -t
+  a2dissite 000-default.conf
+  a2ensite dokuwiki.conf
+  systemctl reload apache2
   
+  Now you want to log into the DC server and in server manager open the DNS settings.
+  Under the "Forward Lookup Zones" add a new host(A) record to the domain:
+  
+  name = www
+  ip address = 10.128.10.80
+  create associated pointer (PTR) record = unchecked
+  add host
    
-   
-   
-   
+  You can now run in the browser of your choice:
+  
+  http://www.widgets.localdomain/install.php
+  
+  ### Stage4 : LAMP Setup : Configure DokuWiki
+  
+  Configure Dokuwiki to your liking. Afterwards rename the dokuwiki file run:
+  
+  mv /var/www/html/dokuwiki/install.php /var/www/html/dokuwiki/install.php.removed
+  
+  Then onto the browser enter:
+  
+  http://www.widgets.localdomain/
+
+  log in using the credentials you used for the setup and you will be brought to a 
+  page with a few options. Select "Create this page".
+  
+  ![dokuwiki create page](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/211a6e17-81a0-49ff-8e97-25e2fb2e0019)
+  
+  for our page we documented each node with its IP, FQDN, hostname, a-records, what ports they are plugged into, and if they are static
+  or dhcp connected.
+  
+ ### Stage4 : LAMP Setup : VIP setup
+
+We will now make this page visible to everyone on the WAP.
+Log into the firewall gui and create a new virtual ip.
+
+![virtual ip](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/22b2af59-5dad-40ff-9cc9-d72f98e91f88)
+
+Configure the firewall to your liking but make sure the ip matches the iis and www servers, and select you interface to
+WAN settings.
+
+Note the WAN IP of the firewall will be dynamic and may change from time to time.
+In the firewall console run:
+show sys int (space) !!!! hold shift and the ?
+and it will give you the public firewall address.
+
+![port1 address](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/b363cc8a-626c-45d6-9148-7b656beee90f)
+
+With any computer over the WAN type in the ip of the WAN into the browser and the dokuwiki page with all the network information
+will pop up.
+
 
 
 
