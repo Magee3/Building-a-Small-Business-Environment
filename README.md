@@ -241,6 +241,60 @@ name. Afterwards you will get a prompt to login. Use an admin account that you h
 
 Logout of the windows10 workstation and log back in using a user, or admin account. Our station has been succesfully linked to our Domain Controller.
 
+### Stage3 : IIS Setup : Topology
+
+Next we will create a webserver. We will set the device up using IIS (Internet Information Service), it will be connected to our LAN-SWITCH.
+
+![IIS Topology](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/fb8502f8-b750-45be-aef7-a3e66e87ae88)
+
+
+### Stage3 : IIS Setup : Prepare a Win2012r2 server
+
+We will rename the servers hostname to: iis
+match the subnet mask with the other devices.
+Give the device a static ip address.
+Point the default gateway to the LAN-SWITCH.
+The DNS will be pointed into the DC and LAN-SWITCH.
+Synchronize the time with the other devices and join the Domain just like we did for the workstation.
+
+### Stage3 : IIS Setup : Install the IIS role
+
+In server manager select # Add roles and features.
+Select Role Based Installation and hit next.
+Select the server in which you want to install IIS on.
+Select IIS Webserver to install and continues with the installation.
+
+![iis configure setup](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/797b8a18-e2be-4da2-ba4e-e94fdbb2c881)
+
+![server pool](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/2ca66c61-4ace-4251-825b-a58e3190d721)
+
+![webserver iis](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/92e28911-3f6a-4c73-8513-7db63c336198)
+
+![add features iis](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/f733b46e-4f24-47af-9ab7-2a671097f3e4)
+
+### Stage3 : IIS Setup : Setup a test webpage on IIS
+
+We will create a test html file to see if our webserver is functioning properly.
+Here is a simple HTML code we used to test the webserver:
+
+  <html>
+  <head>
+  <title> IIS test validation website</title>
+  </head>
+  <body>
+  <p>test website validation completed</p>
+  </body>
+  </html>
+  
+  Save the file as "test.html" 
+  ! Make sure that the file is not a notepad file that it is actually a HTML file.
+  Save the file to this location " c:\inetpub\wwwroot\test.html "
+  
+  You can test to see if your browser can open the file on the local iis server by typing "http://localhost/test.html" in the browser.
+  
+ You can test to see if other workstations in the business environment can access the file by loging into a workstation and typing
+ http://iis.widgets.localdomain/test.html into the browser.
+
 
 
 
