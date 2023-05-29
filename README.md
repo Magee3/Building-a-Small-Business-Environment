@@ -384,7 +384,8 @@ We will now change the servers hostname run:
   
           ErrorLog   /var/log/apache2/dokuwiki_error.log
           CustomLog  /var/log/apache2/dokuwiki_access.log combined
-  </VirtualHost>
+      </VirtualHost>
+  
    
    
    
