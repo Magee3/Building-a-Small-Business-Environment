@@ -300,6 +300,99 @@ Here is a simple HTML code we used to test the webserver:
  Now we will setup a LAMP webserver on Unbuntu server on the DMZ-Network
  
  ![LAMP ubuntu topology](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/0cfe2961-dead-4bfd-bcfb-8c5ec58d1f67)
+ 
+ 
+ ### Stage4 : LAMP Setup : Prepare a Ubuntu server
+
+We gave our Ubuntu server a static ip of 10.128.10.80 same as our iis server but on another network.
+Our subnet mask will be the same.
+the default gateway will point towards the DC.
+our DNS settings will point towards the DC and our DMZ-SWITCH.
+
+![ubuntu settings](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/3a41d144-94f9-46db-8064-490b0d0dd4ff)
+
+We will now edit our host files.
+This takes root privileges run: sudo -i
+then run: nano /etc/hosts
+to edit the host files.
+
+![i am root](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/20c37c6c-c80f-4524-bc7c-93707711dcc1)
+
+We will now add in our local hosts
+
+![local host n domain](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/4caab305-7410-4968-bbdf-34b8e4b52c60)
+
+Save and exit.
+
+We will now change the servers hostname run:
+
+  hostnamectl set-hostname www
+  hostnamectl
+  
+  This sets how hostname as www and checks to make sure we set our hostname correctly right.
+  
+  
+  Lastly we run our package updates on the server. This may take a few minutes to a hour.
+  Run:
+  
+  apt update -y
+  apt upgrade -y
+  apt dist-upgrade -y
+  apt autoremove -y
+  apt autoclean -y
+  systemctl reboot
+  
+  ### Stage4 : LAMP Setup : Install DokuWiki
+  
+  Im not going to lie this is a long step so imma just give you the code to what we did without to much explaining lmaoo.
+  ALSO you must be root for this section.
+  
+  We ran this command to install dokuwiki
+  
+  apt install php php-gd php-xml php-json -y
+  systemctl enable --now apache2
+  ufw allow Apache
+  wget https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz
+  mkdir /var/www/html/dokuwiki
+  tar xzf dokuwiki-stable.tgz -C /var/www/html/dokuwiki/ --strip-components=1
+  
+  Basically the code is installing neccesary packages first, enabling a service apache2, allowing apache through the firewall,
+  downloading dokuwiki, setting up a folder for dokuwiki, then extracting the contents into the folder.
+  
+  We than ran:
+  
+   nano /etc/apache2/sites-available/dokuwiki.conf
+   
+   This will be our configuration file for dokuwiki.
+   
+  Our config file looks like this:
+  
+    <VirtualHost *:80>
+          ServerName    www.widgets.localdomain
+          DocumentRoot  /var/www/html/dokuwiki
+  
+          <Directory ~ "/var/www/html/dokuwiki/(bin/|conf/|data/|inc/)">
+              <IfModule mod_authz_core.c>
+                  AllowOverride All
+                  Require all denied
+              </IfModule>
+              <IfModule !mod_authz_core.c>
+                  Order allow,deny
+                  Deny from all
+              </IfModule>
+          </Directory>
+  
+          ErrorLog   /var/log/apache2/dokuwiki_error.log
+          CustomLog  /var/log/apache2/dokuwiki_access.log combined
+  </VirtualHost>
+   
+   
+   
+   
+
+
+
+
 
 
 
