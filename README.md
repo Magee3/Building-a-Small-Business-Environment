@@ -277,14 +277,14 @@ Select IIS Webserver to install and continues with the installation.
 We will create a test html file to see if our webserver is functioning properly.
 Here is a simple HTML code we used to test the webserver:
 
-  &lt;html&lt;
-  <head>
-  <title> IIS test validation website</title>
-  </head>
-  <body>
-  <p>test website validation completed</p>
-  </body>
-  </html>
+  &lt;html&gt
+  &lt;head&gt
+  &lt;title> IIS test validation website&lt;/title&gt
+  &lt;/head&gt
+  &lt;body&gt
+  &lt;p>test website validation completed&lt;/p&gt
+  &lt;/body&gt
+  &lt;/html&gt
   
   Save the file as "test.html" 
   ! Make sure that the file is not a notepad file that it is actually a HTML file.
