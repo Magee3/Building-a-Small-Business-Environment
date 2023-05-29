@@ -294,6 +294,13 @@ Here is a simple HTML code we used to test the webserver:
   
  You can test to see if other workstations in the business environment can access the file by loging into a workstation and typing
  http://iis.widgets.localdomain/test.html into the browser.
+ 
+ ### Stage4 : LAMP Setup : Topology
+ 
+ Now we will setup a LAMP webserver on Unbuntu server on the DMZ-Network
+ 
+ ![LAMP ubuntu topology](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/0cfe2961-dead-4bfd-bcfb-8c5ec58d1f67)
+
 
 
 
