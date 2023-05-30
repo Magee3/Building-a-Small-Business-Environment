@@ -448,17 +448,89 @@ and it will give you the public firewall address.
 With any computer over the WAN type in the ip of the WAN into the browser and the dokuwiki page with all the network information
 will pop up.
 
+### Stage5 : FTP Setup : Topology
+
+Last server we will add will be the FTP server. It will be attatched to the DMZ-SWITCH. This will allows users on the net
+to transfer files.
+
+![stage 5 ftp topology](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/62666612-7d2b-47fa-892e-103e52c903a1)
+
+### Stage5 : FTP Setup : Prepare a Win2012r2 server
+
+Our hostname will be: FTP
+IP address: 10.128.10.21
+Our subnet mask is the same and our DNS will point towards the DC server, and to the DMZ-Switch.
+Continue to sync time with the DC and join it to the domain.
+
+### Stage5 : FTP Setup : Install the FTP service
+
+Log into the FTP server using the admin credentials you have created.
+
+In Server Manager go to Manage --> Add Roles and Features --> Role-based Option and hit Next.
+
+![SeverManager FTP](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/778414b5-99f1-463b-95a9-7a3721923a3d)
+
+![ServerManager RoleBased](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/f66c86a9-963c-401c-8b5b-4ecf7e765fd5)
+
+Select the server In which you want to install on.
+
+![serverselection](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/ad3bc3e5-5390-43dd-aa69-358f1a44cd99)
+
+Select "Webserver (IIS)" and Add Features hit "Next" until you reach the Web Server Role section.
+
+![iiswebserverselect](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/d1623384-1aab-4700-a6a0-6bd1c9c3e613)
+
+![webserverrole](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/c6755d61-eea5-4785-8047-ef2c3a62d2f3)
+
+Check the FTP Services to install the packages.
+
+![FTP Services](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/42212449-19de-421b-aab5-db8a6e445c50)
+
+Install and Restart the station.
+
+Now open "Internet Information Service".
+
+![IIS](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/db14e4c5-6a7c-4cfb-8a33-696397ab8762)
+
+![iis2](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/3dfd4b41-123f-4195-ba08-be7446d87bc7)
+
+In your C: Drive create a FTP folder and place in some content. We are doing this to ensure other workstations can access our
+FTP server.
+
+![ftpfile](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/7f388a42-a4b5-4cbc-b666-22e07cc6665f)
+
+![ftpcontent](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/65451f21-7544-4809-ad7d-a36880dc7349)
 
 
+Right Click the Server in the IIS manager and select "Add FTP Site"
 
+![addftpsite](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/71bd8c9d-df54-4e63-94cb-9bcca2b071b3)
 
+Enter a server name of your choice and direct the file path to the FTP folder we made in the C: drive.
 
+![ftpsitepath](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/6350fa12-d0d8-4740-bac0-f0ddec6998ec)
 
+![binding ssl](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/a36c7f8d-0b2a-45f4-a4bd-d735511b59f8)
 
+![specific users](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/4f6eadab-5b85-4ebf-bb89-02695d7672c7)
 
+We now switch over to the Domain Controller. Under Server Manager access the "Active Directory Users and Computers" tab.
+Open the forest and right underneath "Users" Add a new folder a name it "FTP" to group users. We will then add all accounts
+and group them into the FTP group so everyone has access to the files.
 
+![ftp access](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/e13b013c-c64b-47c2-b80e-dc5ccd8e4480)
 
+You can test the FTP server by typing ftp//ftp.widgets.localdomain or the FTP's IP.
+You will be given a prompt. Login using your admin credentials.
 
+You will then be directed to the FTP folder.
+
+![ftp login](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/56ab6110-e796-4423-918a-982616a11a15)
+
+![ftp files url](https://github.com/Magee3/Building-a-Small-Business-Environment/assets/134301259/584a3698-942a-490d-9a88-03f85e1fc6b1)
+
+Lastly we added the A records for our FTP server.
+We also changed the firewall settings on inbound to allow connections over port 21 over domain, private, and public networks.
 
 
 
